@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WannaGo — Coming Soon</title>
+  <meta name="description" content="WannaGo — plateforme touristique interactive (MapLibre GL + PMTiles). Lancement bientôt.">
+  <meta property="og:title" content="WannaGo — Coming Soon">
+  <meta property="og:description" content="Carte vectorielle, partenaires locaux, WannaPASS. FR • EN • ES">
+  <meta property="og:url" content="https://wanna-go-world.com">
+  <meta property="og:image" content="https://wanna-go-world.com/assets/logo.svg">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='20' fill='%232dd4bf'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/style.css" />
+  <meta name="robots" content="index,follow">
+</head>
+<body>
+  <div class="container">
+    <main class="card">
+      <div class="row" style="align-items:center; justify-content:space-between">
+        <div class="row" style="align-items:center; gap:12px">
+          <img class="logo" src="assets/logo.svg" alt="WannaGo logo">
+          <h1>WannaGo</h1>
+        </div>
+        <div class="langs" role="tablist" aria-label="Language selector">
+          <button role="tab" data-lang="fr" aria-current="true">FR</button>
+          <button role="tab" data-lang="en">EN</button>
+          <button role="tab" data-lang="es">ES</button>
+        </div>
+      </div>
+
+      <p class="lead i18n" data-fr="Plateforme touristique interactive (MapLibre GL + PMTiles)."
+         data-en="Interactive travel platform (MapLibre GL + PMTiles)."
+         data-es="Plataforma turística interactiva (MapLibre GL + PMTiles).">
+      </p>
+
+      <div class="hr"></div>
+
+      <section class="i18n"
+        data-fr="<b>Coming soon :</b> carte vectorielle rapide, partenaires locaux vérifiés, WannaPASS avec réductions."
+        data-en="<b>Coming soon:</b> fast vector map, vetted local partners, WannaPASS with discounts."
+        data-es="<b>Próximamente:</b> mapa vectorial rápido, socios locales verificados, WannaPASS con descuentos.">
+      </section>
+
+      <p style="margin:18px 0 10px" class="i18n"
+        data-fr="Suivez le projet et les mises à jour :"
+        data-en="Follow the project and updates:"
+        data-es="Sigue el proyecto y las novedades:">
+      </p>
+
+      <div class="row">
+        <a class="cta" href="https://github.com/NicoCR88/wannago" target="_blank" rel="noopener">GitHub</a>
+        <a class="cta" href="mailto:contact@wanna-go-world.com">contact@wanna-go-world.com</a>
+      </div>
+
+      <p class="footer i18n"
+        data-fr="© WannaGo 2025 — Carte propulsée par MapLibre GL et PMTiles."
+        data-en="© WannaGo 2025 — Map powered by MapLibre GL and PMTiles."
+        data-es="© WannaGo 2025 — Mapa con MapLibre GL y PMTiles.">
+      </p>
+    </main>
+  </div>
+
+  <script>
+    (function(){
+      const qs = s => document.querySelector(s);
+      const qsa = s => Array.from(document.querySelectorAll(s));
+      const langBtns = qsa('[data-lang]');
+      const nodes = qsa('.i18n');
+
+      function applyLang(l){
+        langBtns.forEach(b => b.setAttribute('aria-current', b.dataset.lang===l ? 'true':'false'));
+        nodes.forEach(n=>{
+          const val = n.getAttribute('data-'+l);
+          if(!val) return;
+          if(n.children.length) n.innerHTML = val; else n.textContent = val;
+        });
+        localStorage.setItem('wg_lang', l);
+        document.documentElement.lang = l;
+      }
+
+      langBtns.forEach(b=>b.addEventListener('click', ()=>applyLang(b.dataset.lang)));
+      const saved = localStorage.getItem('wg_lang') || (navigator.language||'fr').slice(0,2);
+      applyLang(['fr','en','es'].includes(saved)?saved:'fr');
+    })();
+  </script>
+</body>
+</html>
