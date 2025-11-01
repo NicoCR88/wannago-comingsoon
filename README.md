@@ -1,6 +1,16 @@
-# WannaGo — Coming Soon (GitHub Pages)
+# WannaGo — Landing (Low-Profile)
 
-Public landing page (FR/EN/ES) for **wanna-go-world.com** during early development.
+Configuration actuelle : **mode discret / noindex**.
+
+## 📜 Description
+Page de présence minimale pour le domaine **wanna-go-world.com**.  
+Aucune indexation, aucun lien externe, aucun suivi.  
+Utilisée uniquement pour vérifier le DNS, le HTTPS et la stabilité du domaine.
+
+## ⚙️ Configuration SEO temporaire
+```html
+<meta name="robots" content="noindex,nofollow"> (activer au lancement de la plateforme)
+
 
 ## How to run locally
 Just open `index.html` in a browser (no build step).
